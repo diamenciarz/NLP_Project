@@ -9,7 +9,10 @@ def __parse_json_record(record):
     record_df.drop(["id", "authors", "submitter", "license", "journal-ref", "update_date", "comments", "report-no", "doi"], axis=1, inplace=True)
     return record_df
 
-def read_n_documents(start_reading_at = 0, document_count = 5, path = 'arxiv-metadata-oai-snapshot.json'):
+def read_n_documents(start_reading_at = 0, document_count = 5, path = 'data//arxiv-metadata-oai-snapshot.json'):
+    """
+    Reads n number of documents from the JSON file. You can make it start reading at any position
+    """
     with open(path, 'r') as file:
         records = pd.DataFrame()
         i = 0
