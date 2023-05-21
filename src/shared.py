@@ -67,15 +67,15 @@ def get_data_set_location(name):
         name += '.json'
     return os.path.join(PROJECT_DIRECTORY, 'data', name)
 
-def load_dataset(name):
-    def process(chunk):
-        chunk['category_names'] = chunk['categories'].apply(extract_category_names)
-        chunk['category_groups'] = chunk['categories'].apply(extract_category_groups)
-        chunk['words'] = chunk['abstract'].apply(to_bag_of_words)
-        return chunk
+def process(chunk):
+    chunk['category_names'] = chunk['categories'].apply(extract_category_names)
+    chunk['category_groups'] = chunk['categories'].apply(extract_category_groups)
+    chunk['words'] = chunk['abstract'].apply(to_bag_of_words)
+    return chunk
 
+def load_dataset(name):
     reader = pd.read_json(get_data_set_location(name), chunksize = 2 ** 12, lines = True)
     return (process(chunk) for chunk in reader)
 
-for chunk in load_dataset('arxiv-metadata-oai-snapshot-10000.json'):
-    print(chunk)
+# for chunk in load_dataset('arxiv-metadata-oai-snapshot.json'):
+#     print(chunk)
