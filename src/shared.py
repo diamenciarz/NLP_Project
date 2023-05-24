@@ -35,7 +35,7 @@ def extract_category_names(encoded):
     :param encoded: String of categories as they come in the metadata
     :return: Set of category names encoded in the provided argument.
     """
-    return {decoded.strip() for decoded in re.split('\s+|\s*,\s*', encoded)}
+    return [decoded.strip() for decoded in re.split('\s+|\s*,\s*', encoded)]
 
 def extract_category_groups(encoded):
     """
@@ -47,7 +47,7 @@ def extract_category_groups(encoded):
     :param encoded: String of categories as they come in the metadata
     :return: Set of category groups encoded in the provided argument.
     """
-    return {category.split('.')[0] for category in extract_category_names(encoded)}
+    return [category.split('.')[0] for category in extract_category_names(encoded)]
 
 def extract_year(versions):
     """
