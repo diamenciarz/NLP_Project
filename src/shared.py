@@ -70,7 +70,7 @@ def get_data_set_location(name):
 def process(chunk):
     chunk['category_names'] = chunk['categories'].apply(extract_category_names)
     chunk['category_groups'] = chunk['categories'].apply(extract_category_groups)
-    chunk['words'] = chunk['abstract'].apply(to_bag_of_words)
+    # chunk['words'] = chunk['abstract'].apply(to_bag_of_words)
     return chunk
 
 def load_dataset(name):
