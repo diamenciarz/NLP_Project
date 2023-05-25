@@ -68,7 +68,7 @@ def get_data_set_location(name):
     return os.path.join(PROJECT_DIRECTORY, 'data', name)
 
 def process(chunk):
-    chunk['category_names'] = chunk['categories'].apply(extract_category_names)
+    # chunk['category_names'] = chunk['categories'].apply(extract_category_names)
     chunk['category_groups'] = chunk['categories'].apply(extract_category_groups)
     chunk.drop(["categories"], axis=1, inplace=True)
 

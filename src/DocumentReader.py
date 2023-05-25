@@ -10,7 +10,7 @@ def __parse_json_record(record):
     record_df = pd.DataFrame(record_dict)
     version = record_df["versions"].apply(lambda x: __shorten_version(x))
     record_df.insert(8,"version", version)
-    record_df.drop(["id", "authors", "submitter", "license", "journal-ref", "update_date", "comments", "report-no", "doi", "versions", category_names], axis=1, inplace=True)
+    record_df.drop(["id", "authors", "submitter", "license", "journal-ref", "update_date", "comments", "report-no", "doi", "versions"], axis=1, inplace=True)
 
     return record_df
 
